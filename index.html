@@ -31,7 +31,7 @@ header h1 span { color: var(--accent); font-style: italic; }
 .strand-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
 .drag-handle { position: absolute; top: 8px; left: 7px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; padding: 2px; cursor: grab; opacity: 0.25; z-index: 5; }
 .drag-handle span { display: block; width: 3px; height: 3px; background: var(--ink); border-radius: 50%; }
-.drag-handle:active { cursor: grabbing; }
+.drag-handle:active { cursor: grabbing; opacity: 0.6; }
 .strand-header { padding: 12px 12px 10px 22px; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent; }
 .strand-meta { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
 .strand-tag { font-size: 0.55rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); border: 1px solid var(--faint); padding: 1px 5px; border-radius: 2px; }
@@ -48,20 +48,40 @@ header h1 span { color: var(--accent); font-style: italic; }
 .strand.open > .strand-footer .chevron { transform: rotate(90deg); }
 .strand-body { display: none; padding: 0 12px 14px; border-top: 1px solid var(--faint); }
 .strand.open > .strand-body { display: block; }
+.edit-panel { background: var(--subcard); border-radius: var(--radius); padding: 12px; margin-top: 12px; display: none; }
+.edit-panel.visible { display: block; }
+.edit-panel label { display: block; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; margin-top: 10px; }
+.edit-panel label:first-of-type { margin-top: 0; }
+.edit-panel input, .edit-panel select, .edit-panel textarea { width: 100%; font-family: 'DM Mono', monospace; font-size: 0.78rem; background: var(--bg); border: 1px solid var(--faint); border-radius: var(--radius); padding: 8px 9px; color: var(--ink); outline: none; -webkit-appearance: none; }
+.edit-panel input:focus, .edit-panel select:focus, .edit-panel textarea:focus { border-color: var(--mid); }
+.edit-panel textarea { resize: vertical; min-height: 50px; }
+.edit-color-options { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 5px; }
+.edit-color-dot { width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; flex-shrink: 0; }
+.edit-color-dot.selected { border-color: var(--ink); }
+.edit-actions { display: flex; gap: 8px; margin-top: 12px; }
+.edit-actions button { font-family: 'DM Mono', monospace; font-size: 0.68rem; padding: 8px 14px; border: none; border-radius: var(--radius); cursor: pointer; }
+.btn-save { background: var(--ink); color: var(--bg); }
+.btn-save:active { background: var(--accent); }
+.btn-cancel-edit { background: var(--faint); color: var(--ink); }
 .body-tabs { display: flex; margin-top: 12px; border-bottom: 1px solid var(--faint); }
 .body-tab { font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 5px 12px 6px; border: none; background: none; color: var(--mid); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; -webkit-tap-highlight-color: transparent; }
 .body-tab.active { color: var(--ink); border-bottom-color: var(--ink); }
 .tab-pane { display: none; }
 .tab-pane.active { display: block; }
 .todos { list-style: none; margin-top: 10px; }
-.todo-item { display: flex; align-items: flex-start; gap: 9px; padding: 8px 0; border-bottom: 1px solid var(--faint); font-size: 0.75rem; line-height: 1.4; }
+.todo-item { display: flex; align-items: flex-start; gap: 6px; padding: 8px 0; border-bottom: 1px solid var(--faint); font-size: 0.75rem; line-height: 1.4; touch-action: none; }
 .todo-item:last-child { border-bottom: none; }
+.todo-item.todo-dragging { opacity: 0.35; }
+.todo-item.todo-over { box-shadow: 0 -2px 0 var(--accent); }
+.todo-grip { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; padding: 3px 2px; cursor: grab; opacity: 0.22; flex-shrink: 0; margin-top: 2px; }
+.todo-grip span { display: block; width: 3px; height: 3px; background: var(--ink); border-radius: 50%; }
+.todo-grip:active { opacity: 0.6; cursor: grabbing; }
 .todo-check { width: 17px; height: 17px; border: 1.5px solid var(--mid); border-radius: 2px; flex-shrink: 0; margin-top: 1px; cursor: pointer; appearance: none; background: transparent; position: relative; }
 .todo-check:checked { background: var(--accent2); border-color: var(--accent2); }
 .todo-check:checked::after { content: ''; position: absolute; left: 3px; top: 0; width: 5px; height: 9px; border: 1.5px solid white; border-top: none; border-left: none; transform: rotate(40deg); }
 .todo-label { flex: 1; cursor: pointer; }
 .todo-check:checked + .todo-label { text-decoration: line-through; color: var(--mid); }
-.todo-del { background: none; border: none; color: var(--faint); cursor: pointer; font-size: 1rem; padding: 0 4px; min-width: 28px; text-align: center; }
+.todo-del { background: none; border: none; color: var(--faint); cursor: pointer; font-size: 1rem; padding: 0 4px; min-width: 26px; text-align: center; }
 .todo-del:active { color: var(--accent); }
 .add-todo { display: flex; gap: 7px; margin-top: 10px; }
 .add-todo input { flex: 1; font-family: 'DM Mono', monospace; font-size: 0.75rem; background: var(--faint); border: 1px solid transparent; border-radius: var(--radius); padding: 9px 9px; color: var(--ink); outline: none; }
@@ -81,8 +101,11 @@ header h1 span { color: var(--accent); font-style: italic; }
 .substrand-body { display: none; padding: 0 9px 9px; border-top: 1px solid var(--faint); }
 .substrand.open .substrand-body { display: block; }
 .substrand-todos { list-style: none; margin-top: 7px; }
-.substrand-todo { display: flex; align-items: flex-start; gap: 7px; padding: 7px 0; border-bottom: 1px solid var(--faint); font-size: 0.7rem; line-height: 1.4; }
+.substrand-todo { display: flex; align-items: flex-start; gap: 6px; padding: 7px 0; border-bottom: 1px solid var(--faint); font-size: 0.7rem; line-height: 1.4; touch-action: none; }
 .substrand-todo:last-child { border-bottom: none; }
+.substrand-todo.todo-dragging { opacity: 0.35; }
+.substrand-todo.todo-over { box-shadow: 0 -2px 0 var(--accent); }
+.substrand-todo .todo-grip { margin-top: 1px; }
 .substrand-todo .todo-check { width: 15px; height: 15px; }
 .substrand-todo .todo-check:checked::after { left: 2px; top: 0; width: 4px; height: 8px; }
 .substrand-add { display: flex; gap: 6px; margin-top: 8px; }
@@ -104,7 +127,9 @@ header h1 span { color: var(--accent); font-style: italic; }
 .btn-confirm { background: var(--ink); color: var(--bg); }
 .btn-confirm:active { background: var(--accent); }
 .btn-cancel-sm { background: var(--faint); color: var(--ink); }
-.strand-actions { display: flex; justify-content: flex-end; margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--faint); }
+.strand-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--faint); }
+.strand-edit-btn { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: 1px solid var(--faint); color: var(--mid); padding: 6px 12px; border-radius: var(--radius); cursor: pointer; }
+.strand-edit-btn:active { border-color: var(--mid); color: var(--ink); }
 .strand-delete-btn { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: 1px solid var(--faint); color: var(--mid); padding: 6px 12px; border-radius: var(--radius); cursor: pointer; }
 .strand-delete-btn:active { border-color: var(--accent); color: var(--accent); }
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,18,8,0.5); z-index: 500; backdrop-filter: blur(2px); align-items: flex-end; justify-content: center; }
@@ -178,12 +203,14 @@ function load(){try{const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return f
 const findStrand=id=>strands.find(s=>s.id===id);
 const findSub=(s,sid)=>s.subs.find(x=>x.id===sid);
 function allDone(s){const td=s.todos.filter(t=>t.done).length,tt=s.todos.length;const sd=s.subs.reduce((a,sub)=>a+sub.todos.filter(t=>t.done).length,0);const st=s.subs.reduce((a,sub)=>a+sub.todos.length,0);return{done:td+sd,total:tt+st};}
+const grip=()=>`<div class="todo-grip"><span></span><span></span><span></span><span></span><span></span><span></span></div>`;
 
 function render(){
 const canvas=document.getElementById('canvas');
 if(!strands.length){canvas.innerHTML='<div class="empty-state"><h2>No strands yet.</h2><p>Tap "+ New" to begin.</p></div>';return;}
 canvas.innerHTML=strands.map(renderStrand).join('');
-initDrag();
+initStrandDrag();
+initTodoDrag();
 }
 
 function renderStrand(s){
@@ -192,8 +219,24 @@ const pct=total?Math.round(done/total*100):0;
 const sc={active:'status-active',paused:'status-paused',blocked:'status-blocked'}[s.status];
 const sl={active:'Active',paused:'Paused',blocked:'Blocked'}[s.status];
 const subCount=s.subs.length;
-const todoRows=s.todos.map(t=>`<li class="todo-item"><input type="checkbox" class="todo-check" ${t.done?'checked':''} onchange="toggleTodo(${s.id},${t.id})"><label class="todo-label" onclick="toggleTodo(${s.id},${t.id})">${esc(t.text)}</label><button class="todo-del" onclick="deleteTodo(${s.id},${t.id})">x</button></li>`).join('');
+const todoRows=s.todos.map(t=>`<li class="todo-item" data-sid="${s.id}" data-tid="${t.id}">${grip()}<input type="checkbox" class="todo-check" ${t.done?'checked':''} onchange="toggleTodo(${s.id},${t.id})"><label class="todo-label" onclick="toggleTodo(${s.id},${t.id})">${esc(t.text)}</label><button class="todo-del" onclick="deleteTodo(${s.id},${t.id})">x</button></li>`).join('');
 const subRows=s.subs.map(sub=>renderSub(s.id,sub)).join('');
+const editPanel=`<div class="edit-panel" id="edit-${s.id}">
+<label>Title</label><input type="text" id="et-${s.id}" value="${esc(s.title)}">
+<label>Description</label><textarea id="ed-${s.id}">${esc(s.desc)}</textarea>
+<label>Category</label><input type="text" id="ec-${s.id}" value="${esc(s.tag)}">
+<label>Status</label><select id="es-${s.id}">
+<option value="active" ${s.status==='active'?'selected':''}>Active</option>
+<option value="paused" ${s.status==='paused'?'selected':''}>Paused</option>
+<option value="blocked" ${s.status==='blocked'?'selected':''}>Blocked</option>
+</select>
+<label>Colour</label>
+<div class="edit-color-options">${COLORS.map(c=>`<div class="edit-color-dot ${c===s.color?'selected':''}" style="background:${c}" onclick="pickEditColor(${s.id},'${c}')"></div>`).join('')}</div>
+<div class="edit-actions">
+<button class="btn-save" onclick="saveEdit(${s.id})">Save</button>
+<button class="btn-cancel-edit" onclick="closeEdit(${s.id})">Cancel</button>
+</div>
+</div>`;
 return `<div class="strand ${s.open?'open':''}" id="strand-${s.id}" data-id="${s.id}">
 <div class="strand-accent" style="background:${s.color}"></div>
 <div class="drag-handle" data-drag="${s.id}"><span></span><span></span><span></span><span></span><span></span><span></span></div>
@@ -208,12 +251,13 @@ ${total>0?`<div class="strand-progress"><div class="strand-progress-fill" style=
 <span style="display:flex;align-items:center;gap:3px"><i class="chevron">&#9658;</i> ${s.open?'less':'more'}</span>
 </div>
 <div class="strand-body">
+${editPanel}
 <div class="body-tabs">
 <button class="body-tab ${s.activeTab==='tasks'?'active':''}" onclick="setTab(${s.id},'tasks')">Tasks</button>
 <button class="body-tab ${s.activeTab==='subs'?'active':''}" onclick="setTab(${s.id},'subs')">Sub-strands${subCount?` (${subCount})`:''}</button>
 </div>
 <div class="tab-pane ${s.activeTab==='tasks'?'active':''}">
-<ul class="todos">${todoRows}</ul>
+<ul class="todos" id="todos-${s.id}">${todoRows}</ul>
 <div class="add-todo"><input type="text" id="newtodo-${s.id}" placeholder="Add a task..." onkeydown="if(event.key==='Enter')addTodo(${s.id})"><button onclick="addTodo(${s.id})">Add</button></div>
 </div>
 <div class="tab-pane ${s.activeTab==='subs'?'active':''}">
@@ -223,7 +267,10 @@ ${subRows}
 <button class="add-substrand-btn" id="nsb-${s.id}" onclick="showNewSubForm(${s.id})">+ Add sub-strand</button>
 </div>
 </div>
-<div class="strand-actions"><button class="strand-delete-btn" onclick="deleteStrand(${s.id})">Delete strand</button></div>
+<div class="strand-actions">
+<button class="strand-edit-btn" onclick="openEdit(${s.id})">Edit</button>
+<button class="strand-delete-btn" onclick="deleteStrand(${s.id})">Delete</button>
+</div>
 </div>
 </div>`;
 }
@@ -231,7 +278,7 @@ ${subRows}
 function renderSub(sid,sub){
 const done=sub.todos.filter(t=>t.done).length,total=sub.todos.length;
 const color=findStrand(sid).color;
-const todoRows=sub.todos.map(t=>`<li class="substrand-todo"><input type="checkbox" class="todo-check" ${t.done?'checked':''} onchange="toggleSubTodo(${sid},${sub.id},${t.id})"><label class="todo-label" onclick="toggleSubTodo(${sid},${sub.id},${t.id})">${esc(t.text)}</label><button class="todo-del" onclick="deleteSubTodo(${sid},${sub.id},${t.id})">x</button></li>`).join('');
+const todoRows=sub.todos.map(t=>`<li class="substrand-todo" data-sid="${sid}" data-subid="${sub.id}" data-tid="${t.id}">${grip()}<input type="checkbox" class="todo-check" ${t.done?'checked':''} onchange="toggleSubTodo(${sid},${sub.id},${t.id})"><label class="todo-label" onclick="toggleSubTodo(${sid},${sub.id},${t.id})">${esc(t.text)}</label><button class="todo-del" onclick="deleteSubTodo(${sid},${sub.id},${t.id})">x</button></li>`).join('');
 return `<div class="substrand ${sub.open?'open':''}" id="sub-${sid}-${sub.id}">
 <div class="substrand-accent" style="background:${color}88"></div>
 <div class="substrand-header" onclick="toggleSub(${sid},${sub.id})">
@@ -239,56 +286,53 @@ return `<div class="substrand ${sub.open?'open':''}" id="sub-${sid}-${sub.id}">
 <span class="substrand-chevron">&#9658;</span>
 </div>
 <div class="substrand-body">
-<ul class="substrand-todos">${todoRows}</ul>
+<ul class="substrand-todos" id="subtodos-${sid}-${sub.id}">${todoRows}</ul>
 <div class="substrand-add"><input type="text" id="sst-${sid}-${sub.id}" placeholder="Add task..." onkeydown="if(event.key==='Enter')addSubTodo(${sid},${sub.id})"><button onclick="addSubTodo(${sid},${sub.id})">Add</button></div>
 <div class="substrand-del-row"><button class="substrand-del-btn" onclick="deleteSub(${sid},${sub.id})">Delete</button></div>
 </div>
 </div>`;
 }
 
-let dragSrcId=null,touchDragId=null,touchClone=null,touchOffX=0,touchOffY=0;
+let editColorPick={};
+function openEdit(id){const s=findStrand(id);if(!s)return;editColorPick[id]=s.color;const panel=document.getElementById(`edit-${id}`);if(panel)panel.classList.add('visible');}
+function closeEdit(id){const panel=document.getElementById(`edit-${id}`);if(panel)panel.classList.remove('visible');}
+function pickEditColor(id,c){editColorPick[id]=c;const panel=document.getElementById(`edit-${id}`);if(panel)panel.querySelectorAll('.edit-color-dot').forEach(d=>d.classList.toggle('selected',d.style.background===c||d.style.backgroundColor===c));}
+function saveEdit(id){const s=findStrand(id);if(!s)return;const t=document.getElementById(`et-${id}`);const d=document.getElementById(`ed-${id}`);const c=document.getElementById(`ec-${id}`);const st=document.getElementById(`es-${id}`);if(t)s.title=t.value.trim()||s.title;if(d)s.desc=d.value.trim();if(c)s.tag=c.value.trim()||s.tag;if(st)s.status=st.value;if(editColorPick[id])s.color=editColorPick[id];s.open=true;save();render();}
 
-function initDrag(){
+let dragSrcId=null,touchDragId=null,touchClone=null,touchOffX=0,touchOffY=0;
+function initStrandDrag(){
 const canvas=document.getElementById('canvas');
 canvas.querySelectorAll('.strand').forEach(el=>el.setAttribute('draggable','false'));
 canvas.querySelectorAll('.drag-handle').forEach(handle=>{
 handle.addEventListener('mousedown',e=>{const card=handle.closest('.strand');card.setAttribute('draggable','true');dragSrcId=parseInt(card.dataset.id);});
-handle.addEventListener('touchstart',e=>{
-const card=handle.closest('.strand');
-touchDragId=parseInt(card.dataset.id);
-const touch=e.touches[0];
-const rect=card.getBoundingClientRect();
-touchOffX=touch.clientX-rect.left;touchOffY=touch.clientY-rect.top;
-touchClone=card.cloneNode(true);
-touchClone.style.cssText=`position:fixed;z-index:999;width:${rect.width}px;opacity:0.85;pointer-events:none;box-shadow:0 8px 32px rgba(26,18,8,0.25);transform:scale(1.03);transition:none;border-radius:4px;`;
-touchClone.style.left=(touch.clientX-touchOffX)+'px';touchClone.style.top=(touch.clientY-touchOffY)+'px';
-document.body.appendChild(touchClone);card.classList.add('dragging');e.preventDefault();
-},{passive:false});
-handle.addEventListener('touchmove',e=>{
-if(!touchClone)return;
-const touch=e.touches[0];
-touchClone.style.left=(touch.clientX-touchOffX)+'px';touchClone.style.top=(touch.clientY-touchOffY)+'px';
-touchClone.style.display='none';const el=document.elementFromPoint(touch.clientX,touch.clientY);touchClone.style.display='';
-const over=el&&el.closest('.strand[data-id]');
-document.querySelectorAll('.strand').forEach(c=>c.classList.remove('drag-over'));
-if(over&&parseInt(over.dataset.id)!==touchDragId)over.classList.add('drag-over');
-e.preventDefault();
-},{passive:false});
-handle.addEventListener('touchend',e=>{
-if(!touchClone){touchDragId=null;return;}
-const touch=e.changedTouches[0];
-touchClone.style.display='none';const el=document.elementFromPoint(touch.clientX,touch.clientY);touchClone.style.display='';
-const over=el&&el.closest('.strand[data-id]');
-if(over){const targetId=parseInt(over.dataset.id);if(targetId!==touchDragId){const si=strands.findIndex(s=>s.id===touchDragId);const ti=strands.findIndex(s=>s.id===targetId);const [moved]=strands.splice(si,1);strands.splice(ti,0,moved);save();}}
-touchClone.remove();touchClone=null;touchDragId=null;
-document.querySelectorAll('.strand').forEach(c=>c.classList.remove('dragging','drag-over'));
-render();
-});
+handle.addEventListener('touchstart',e=>{const card=handle.closest('.strand');touchDragId=parseInt(card.dataset.id);const touch=e.touches[0];const rect=card.getBoundingClientRect();touchOffX=touch.clientX-rect.left;touchOffY=touch.clientY-rect.top;touchClone=card.cloneNode(true);touchClone.style.cssText=`position:fixed;z-index:999;width:${rect.width}px;opacity:0.85;pointer-events:none;box-shadow:0 8px 32px rgba(26,18,8,0.25);transform:scale(1.03);transition:none;border-radius:4px;`;touchClone.style.left=(touch.clientX-touchOffX)+'px';touchClone.style.top=(touch.clientY-touchOffY)+'px';document.body.appendChild(touchClone);card.classList.add('dragging');e.preventDefault();},{passive:false});
+handle.addEventListener('touchmove',e=>{if(!touchClone)return;const touch=e.touches[0];touchClone.style.left=(touch.clientX-touchOffX)+'px';touchClone.style.top=(touch.clientY-touchOffY)+'px';touchClone.style.display='none';const el=document.elementFromPoint(touch.clientX,touch.clientY);touchClone.style.display='';const over=el&&el.closest('.strand[data-id]');document.querySelectorAll('.strand').forEach(c=>c.classList.remove('drag-over'));if(over&&parseInt(over.dataset.id)!==touchDragId)over.classList.add('drag-over');e.preventDefault();},{passive:false});
+handle.addEventListener('touchend',e=>{if(!touchClone){touchDragId=null;return;}const touch=e.changedTouches[0];touchClone.style.display='none';const el=document.elementFromPoint(touch.clientX,touch.clientY);touchClone.style.display='';const over=el&&el.closest('.strand[data-id]');if(over){const targetId=parseInt(over.dataset.id);if(targetId!==touchDragId){const si=strands.findIndex(s=>s.id===touchDragId);const ti=strands.findIndex(s=>s.id===targetId);const[moved]=strands.splice(si,1);strands.splice(ti,0,moved);save();}}touchClone.remove();touchClone=null;touchDragId=null;document.querySelectorAll('.strand').forEach(c=>c.classList.remove('dragging','drag-over'));render();});
 });
 canvas.addEventListener('dragstart',e=>{const card=e.target.closest('.strand');if(!card)return;dragSrcId=parseInt(card.dataset.id);card.classList.add('dragging');e.dataTransfer.effectAllowed='move';});
 canvas.addEventListener('dragend',e=>{canvas.querySelectorAll('.strand').forEach(el=>{el.classList.remove('dragging','drag-over');el.setAttribute('draggable','false');});dragSrcId=null;});
 canvas.addEventListener('dragover',e=>{e.preventDefault();const card=e.target.closest('.strand[data-id]');if(!card||parseInt(card.dataset.id)===dragSrcId)return;canvas.querySelectorAll('.strand').forEach(el=>el.classList.remove('drag-over'));card.classList.add('drag-over');});
-canvas.addEventListener('drop',e=>{e.preventDefault();const card=e.target.closest('.strand[data-id]');if(!card||!dragSrcId)return;const targetId=parseInt(card.dataset.id);if(targetId===dragSrcId)return;const si=strands.findIndex(s=>s.id===dragSrcId);const ti=strands.findIndex(s=>s.id===targetId);const [moved]=strands.splice(si,1);strands.splice(ti,0,moved);save();render();});
+canvas.addEventListener('drop',e=>{e.preventDefault();const card=e.target.closest('.strand[data-id]');if(!card||!dragSrcId)return;const targetId=parseInt(card.dataset.id);if(targetId===dragSrcId)return;const si=strands.findIndex(s=>s.id===dragSrcId);const ti=strands.findIndex(s=>s.id===targetId);const[moved]=strands.splice(si,1);strands.splice(ti,0,moved);save();render();});
+}
+
+let todoTouchSrc=null,todoTouchClone=null,todoTouchOffX=0,todoTouchOffY=0;
+function initTodoDrag(){
+document.querySelectorAll('.todo-grip').forEach(grip=>{
+const li=grip.closest('li');if(!li)return;
+grip.addEventListener('touchstart',e=>{todoTouchSrc=li;const touch=e.touches[0];const rect=li.getBoundingClientRect();todoTouchOffX=touch.clientX-rect.left;todoTouchOffY=touch.clientY-rect.top;todoTouchClone=li.cloneNode(true);todoTouchClone.style.cssText=`position:fixed;z-index:998;width:${rect.width}px;opacity:0.8;pointer-events:none;background:var(--card);border-radius:2px;padding:8px;font-size:0.75rem;font-family:'DM Mono',monospace;box-shadow:0 4px 16px rgba(26,18,8,0.18);`;todoTouchClone.style.left=(touch.clientX-todoTouchOffX)+'px';todoTouchClone.style.top=(touch.clientY-todoTouchOffY)+'px';document.body.appendChild(todoTouchClone);li.classList.add('todo-dragging');e.preventDefault();e.stopPropagation();},{passive:false});
+grip.addEventListener('touchmove',e=>{if(!todoTouchClone)return;const touch=e.touches[0];todoTouchClone.style.left=(touch.clientX-todoTouchOffX)+'px';todoTouchClone.style.top=(touch.clientY-todoTouchOffY)+'px';todoTouchClone.style.display='none';const el=document.elementFromPoint(touch.clientX,touch.clientY);todoTouchClone.style.display='';document.querySelectorAll('li.todo-item,li.substrand-todo').forEach(l=>l.classList.remove('todo-over'));const overLi=el&&el.closest('li.todo-item,li.substrand-todo');if(overLi&&overLi!==todoTouchSrc)overLi.classList.add('todo-over');e.preventDefault();e.stopPropagation();},{passive:false});
+grip.addEventListener('touchend',e=>{if(!todoTouchClone){todoTouchSrc=null;return;}const touch=e.changedTouches[0];todoTouchClone.style.display='none';const el=document.elementFromPoint(touch.clientX,touch.clientY);todoTouchClone.style.display='';const overLi=el&&el.closest('li.todo-item,li.substrand-todo');if(overLi&&overLi!==todoTouchSrc)reorderTodo(todoTouchSrc,overLi);todoTouchClone.remove();todoTouchClone=null;document.querySelectorAll('li').forEach(l=>l.classList.remove('todo-dragging','todo-over'));todoTouchSrc=null;render();});
+grip.addEventListener('mousedown',()=>{if(li)li.setAttribute('draggable','true');});
+li.addEventListener('dragstart',e=>{if(!e.target.closest('.todo-grip')){e.preventDefault();return;}todoTouchSrc=li;li.classList.add('todo-dragging');e.dataTransfer.effectAllowed='move';e.stopPropagation();});
+li.addEventListener('dragend',()=>{document.querySelectorAll('li').forEach(l=>l.classList.remove('todo-dragging','todo-over'));li.setAttribute('draggable','false');todoTouchSrc=null;});
+li.addEventListener('dragover',e=>{e.preventDefault();e.stopPropagation();document.querySelectorAll('li').forEach(l=>l.classList.remove('todo-over'));if(li!==todoTouchSrc)li.classList.add('todo-over');});
+li.addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();if(!todoTouchSrc||todoTouchSrc===li)return;reorderTodo(todoTouchSrc,li);render();});
+});
+}
+
+function reorderTodo(src,target){
+if(src.classList.contains('todo-item')){const sid=parseInt(src.dataset.sid),srcTid=parseInt(src.dataset.tid),tgtTid=parseInt(target.dataset.tid);const s=findStrand(sid);if(!s)return;const si=s.todos.findIndex(t=>t.id===srcTid),ti=s.todos.findIndex(t=>t.id===tgtTid);if(si>-1&&ti>-1){const[m]=s.todos.splice(si,1);s.todos.splice(ti,0,m);s.open=true;save();}}
+else{const sid=parseInt(src.dataset.sid),subid=parseInt(src.dataset.subid),srcTid=parseInt(src.dataset.tid),tgtTid=parseInt(target.dataset.tid);const s=findStrand(sid);const sub=s&&findSub(s,subid);if(!sub)return;const si=sub.todos.findIndex(t=>t.id===srcTid),ti=sub.todos.findIndex(t=>t.id===tgtTid);if(si>-1&&ti>-1){const[m]=sub.todos.splice(si,1);sub.todos.splice(ti,0,m);s.open=true;sub.open=true;s.activeTab='subs';save();}}
 }
 
 function toggleStrand(id){const s=findStrand(id);if(s){s.open=!s.open;save();render();}}
