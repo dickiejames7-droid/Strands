@@ -21,9 +21,9 @@ header h1 span { color: var(--accent); font-style: italic; }
 .add-btn { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: var(--ink); color: var(--bg); border: none; padding: 7px 13px; cursor: pointer; border-radius: var(--radius); flex-shrink: 0; }
 .add-btn:active { background: var(--accent); }
 .nav-tabs { display: flex; gap: 0; }
-.nav-tab { font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 16px 9px; border: none; background: none; color: var(--mid); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; position: relative; -webkit-tap-highlight-color: transparent; }
+.nav-tab { font-family: 'DM Mono', monospace; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 8px 12px 9px; border: none; background: none; color: var(--mid); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; position: relative; -webkit-tap-highlight-color: transparent; }
 .nav-tab.active { color: var(--ink); border-bottom-color: var(--ink); }
-.nav-tab .badge { position: absolute; top: 4px; right: 4px; background: var(--accent); color: white; font-size: 0.5rem; font-weight: 700; border-radius: 8px; padding: 1px 4px; min-width: 14px; text-align: center; }
+.nav-tab .badge { position: absolute; top: 4px; right: 2px; background: var(--accent); color: white; font-size: 0.5rem; font-weight: 700; border-radius: 8px; padding: 1px 4px; min-width: 14px; text-align: center; }
 .view { display: none; }
 .view.active { display: block; }
 .today-view { padding: 16px; }
@@ -109,13 +109,13 @@ header h1 span { color: var(--accent); font-style: italic; }
 .todo-check:checked::after { content: ''; position: absolute; left: 3px; top: 0; width: 5px; height: 9px; border: 1.5px solid white; border-top: none; border-left: none; transform: rotate(40deg); }
 .todo-label { flex: 1; cursor: pointer; }
 .todo-check:checked + .todo-label { text-decoration: line-through; color: var(--mid); }
-.todo-today-btn { background: none; border: 1px solid var(--faint); border-radius: 2px; color: var(--mid); cursor: pointer; font-size: 0.55rem; font-family: 'DM Mono', monospace; letter-spacing: 0.05em; padding: 2px 5px; flex-shrink: 0; margin-top: 2px; white-space: nowrap; transition: border-color var(--transition), color var(--transition), background var(--transition); }
+.todo-today-btn { background: none; border: 1px solid var(--faint); border-radius: 2px; color: var(--mid); cursor: pointer; font-size: 0.55rem; font-family: 'DM Mono', monospace; letter-spacing: 0.05em; padding: 2px 5px; flex-shrink: 0; margin-top: 2px; white-space: nowrap; }
 .todo-today-btn:active { background: var(--accent); color: white; border-color: var(--accent); }
 .todo-today-btn.in-today { background: var(--accent2); color: white; border-color: var(--accent2); }
 .todo-del { background: none; border: none; color: var(--faint); cursor: pointer; font-size: 1rem; padding: 0 2px; min-width: 24px; text-align: center; }
 .todo-del:active { color: var(--accent); }
 .add-todo { display: flex; gap: 7px; margin-top: 10px; }
-.add-todo input { flex: 1; font-family: 'DM Mono', monospace; font-size: 16px; background: var(--faint); border: 1px solid transparent; border-radius: var(--radius); padding: 9px 9px; color: var(--ink); outline: none; }
+.add-todo input { flex: 1; font-family: 'DM Mono', monospace; font-size: 16px; background: var(--faint); border: 1px solid transparent; border-radius: var(--radius); padding: 9px; color: var(--ink); outline: none; }
 .add-todo input:focus { border-color: var(--mid); }
 .add-todo input::placeholder { color: var(--mid); opacity: 0.6; }
 .add-todo button { font-family: 'DM Mono', monospace; font-size: 0.68rem; background: var(--ink); color: var(--bg); border: none; padding: 9px 12px; border-radius: var(--radius); cursor: pointer; }
@@ -183,6 +183,29 @@ header h1 span { color: var(--accent); font-style: italic; }
 .empty-state { grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--mid); }
 .empty-state h2 { font-family: 'Libre Baskerville', serif; font-size: 1.2rem; font-weight: 400; font-style: italic; margin-bottom: 8px; }
 .empty-state p { font-size: 0.74rem; opacity: 0.7; }
+.focus-view { padding: 16px; }
+.focus-date { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
+.focus-heading { font-family: 'Libre Baskerville', serif; font-size: 1.3rem; font-weight: 400; font-style: italic; color: var(--ink); margin-bottom: 20px; }
+.focus-empty { text-align: center; padding: 50px 20px; color: var(--mid); }
+.focus-empty h2 { font-family: 'Libre Baskerville', serif; font-size: 1rem; font-weight: 400; font-style: italic; margin-bottom: 8px; }
+.focus-empty p { font-size: 0.72rem; opacity: 0.7; line-height: 1.5; }
+.focus-list { list-style: none; }
+.focus-item { display: flex; align-items: center; gap: 12px; padding: 16px; background: var(--card); border: 1px solid var(--faint); border-radius: var(--radius); margin-bottom: 10px; box-shadow: 0 1px 4px var(--shadow); touch-action: none; position: relative; overflow: hidden; }
+.focus-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }
+.focus-item.focus-dragging { opacity: 0.35; }
+.focus-item.focus-drag-over { box-shadow: 0 -2px 0 var(--accent); }
+.focus-grip { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; padding: 3px 2px; cursor: grab; opacity: 0.22; flex-shrink: 0; }
+.focus-grip span { display: block; width: 3px; height: 3px; background: var(--ink); border-radius: 50%; }
+.focus-grip:active { opacity: 0.6; cursor: grabbing; }
+.focus-num { font-size: 0.65rem; color: var(--mid); font-weight: 500; flex-shrink: 0; width: 16px; text-align: center; }
+.focus-title { font-family: 'Libre Baskerville', serif; font-size: 1rem; font-weight: 700; flex: 1; line-height: 1.3; }
+.focus-remove { background: none; border: none; color: var(--faint); cursor: pointer; font-size: 0.85rem; padding: 0 2px; flex-shrink: 0; }
+.focus-remove:active { color: var(--accent); }
+.focus-clear { display: block; width: 100%; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: 1px dashed var(--faint); color: var(--mid); padding: 9px; border-radius: var(--radius); cursor: pointer; margin-top: 12px; }
+.focus-clear:active { border-color: var(--mid); }
+.focus-btn { background: none; border: 1px solid var(--faint); border-radius: 2px; color: var(--mid); cursor: pointer; font-size: 0.55rem; font-family: 'DM Mono', monospace; letter-spacing: 0.05em; padding: 2px 5px; flex-shrink: 0; margin-top: 2px; white-space: nowrap; }
+.focus-btn:active { background: var(--accent2); color: white; border-color: var(--accent2); }
+.focus-btn.in-focus { background: var(--accent2); color: white; border-color: var(--accent2); }
 </style>
 </head>
 <body>
@@ -193,11 +216,17 @@ header h1 span { color: var(--accent); font-style: italic; }
 </div>
 <nav class="nav-tabs">
 <button class="nav-tab active" id="tab-strands" onclick="showView('strands')">Strands</button>
+<button class="nav-tab" id="tab-focus" onclick="showView('focus')">Focus <span class="badge" id="focus-badge" style="display:none"></span></button>
 <button class="nav-tab" id="tab-today" onclick="showView('today')">Today <span class="badge" id="today-badge" style="display:none"></span></button>
 </nav>
 </header>
-<div class="view active" id="view-strands">
-<div class="canvas" id="canvas"></div>
+<div class="view active" id="view-strands"><div class="canvas" id="canvas"></div></div>
+<div class="view" id="view-focus">
+<div class="focus-view">
+<div class="focus-date" id="focus-date"></div>
+<div class="focus-heading">Day focus</div>
+<div id="focus-content"></div>
+</div>
 </div>
 <div class="view" id="view-today">
 <div class="today-view">
@@ -208,18 +237,11 @@ header h1 span { color: var(--accent); font-style: italic; }
 <div class="modal-overlay" id="modal" onclick="closeModalOnOverlay(event)">
 <div class="modal">
 <h2>New strand</h2>
-<label>Title</label>
-<input type="text" id="m-title" placeholder="e.g. Chai concentrate">
-<label>Description</label>
-<textarea id="m-desc" placeholder="What is this strand about?"></textarea>
-<label>Category</label>
-<input type="text" id="m-tag" placeholder="e.g. Harth / CIMA / Personal">
+<label>Title</label><input type="text" id="m-title" placeholder="e.g. Chai concentrate">
+<label>Description</label><textarea id="m-desc" placeholder="What is this strand about?"></textarea>
+<label>Category</label><input type="text" id="m-tag" placeholder="e.g. Harth / CIMA / Personal">
 <label>Status</label>
-<select id="m-status">
-<option value="active">Active</option>
-<option value="paused">Paused</option>
-<option value="blocked">Blocked</option>
-</select>
+<select id="m-status"><option value="active">Active</option><option value="paused">Paused</option><option value="blocked">Blocked</option></select>
 <label>Colour</label>
 <div class="color-options" id="color-options"></div>
 <div class="modal-actions">
@@ -231,12 +253,10 @@ header h1 span { color: var(--accent); font-style: italic; }
 <script>
 const COLORS=['#c8440a','#2a6b4a','#2a4a8a','#8a2a6b','#6b4a2a','#1a6b6b','#8a6b2a','#4a2a8a','#6b2a2a','#2a6b2a'];
 const STORAGE_KEY='strands-data-v2';
-let selectedColor=COLORS[0];
-let _id=200;
+let selectedColor=COLORS[0],_id=200,currentView='strands';
+let todayList=[],focusList=[];
 const uid=()=>_id++;
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-let todayList=[];
-let currentView='strands';
 
 let strands=[
 {id:1,title:'Chai Concentrate',tag:'Harth',status:'active',desc:'pH, Brix, packaging, supplier sourcing',color:COLORS[0],open:false,activeTab:'tasks',todos:[{id:1,text:'Confirm tinplate coating cert (EU 10/2011)',done:false},{id:2,text:'Lock in tamarind supplier',done:false},{id:3,text:'pH stability test at 3 months',done:false},{id:4,text:'Label copy draft',done:true}],subs:[{id:10,title:'Packaging',open:false,todos:[{id:11,text:'Get PPG coating spec sheet',done:false},{id:12,text:'BPA-free cert from supplier',done:true}]},{id:13,title:'Equipment',open:false,todos:[{id:14,text:'Quote for steam-jacketed kettle',done:false},{id:15,text:'Visit cider press demo',done:false}]}]},
@@ -245,18 +265,55 @@ let strands=[
 {id:4,title:'Film Photography',tag:'Creative',status:'paused',desc:'Zone System, darkroom, photobook',color:COLORS[5],open:false,activeTab:'tasks',todos:[{id:50,text:'Book Negative Thinking darkroom',done:false},{id:51,text:'Develop RZ67 roll',done:true}],subs:[]}
 ];
 
-function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({strands,_id,todayList}));}catch(e){}}
-function load(){try{const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d.strands)strands=d.strands;if(d._id)_id=d._id;if(d.todayList)todayList=d.todayList;return true;}catch(e){return false;}}
+function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({strands,_id,todayList,focusList}));}catch(e){}}
+function load(){try{const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d.strands)strands=d.strands;if(d._id)_id=d._id;if(d.todayList)todayList=d.todayList;if(d.focusList)focusList=d.focusList;return true;}catch(e){return false;}}
 const findStrand=id=>strands.find(s=>s.id===id);
 const findSub=(s,sid)=>s.subs.find(x=>x.id===sid);
 function allDone(s){const td=s.todos.filter(t=>t.done).length,tt=s.todos.length;const sd=s.subs.reduce((a,sub)=>a+sub.todos.filter(t=>t.done).length,0);const st=s.subs.reduce((a,sub)=>a+sub.todos.length,0);return{done:td+sd,total:tt+st};}
+
+function isInFocus(sid){return focusList.some(x=>x.sid===sid);}
+function addToFocus(sid){if(!isInFocus(sid)){const s=findStrand(sid);if(!s)return;focusList.push({sid});save();render();updateFocusBadge();}}
+function removeFromFocus(sid){focusList=focusList.filter(x=>x.sid!==sid);save();render();if(currentView==='focus')renderFocus();updateFocusBadge();}
+function updateFocusBadge(){const b=document.getElementById('focus-badge');if(b){b.textContent=focusList.length;b.style.display=focusList.length>0?'':'none';}}
+
+function renderFocus(){
+const container=document.getElementById('focus-content');
+const dateEl=document.getElementById('focus-date');
+if(dateEl){const d=new Date();dateEl.textContent=d.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});}
+if(!container)return;
+focusList=focusList.filter(x=>findStrand(x.sid));
+if(!focusList.length){container.innerHTML='<div class="focus-empty"><h2>Nothing in focus yet.</h2><p>Tap the "focus" button on any strand tile to add it here, then drag to prioritise.</p></div>';return;}
+const items=focusList.map((x,i)=>{
+const s=findStrand(x.sid);if(!s)return '';
+return '<li class="focus-item" data-fidx="'+i+'" style="--fc:'+s.color+'"><div class="focus-grip"><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="focus-num">'+(i+1)+'</div><div class="focus-title">'+esc(s.title)+'</div><button class="focus-remove" onclick="removeFromFocus('+x.sid+')">x</button></li>';
+}).join('');
+container.innerHTML='<ul class="focus-list" id="focus-list">'+items+'</ul><button class="focus-clear" onclick="focusList=[];save();renderFocus();updateFocusBadge();render()">Clear all</button>';
+updateFocusBadge();
+initFocusDrag();
+}
+
+let focusTouchSrc=null,focusTouchClone=null,focusTouchOffX=0,focusTouchOffY=0;
+function initFocusDrag(){
+const list=document.getElementById('focus-list');if(!list)return;
+list.querySelectorAll('.focus-grip').forEach(grip=>{
+const li=grip.closest('li');if(!li)return;
+grip.addEventListener('touchstart',e=>{focusTouchSrc=li;const touch=e.touches[0];const rect=li.getBoundingClientRect();focusTouchOffX=touch.clientX-rect.left;focusTouchOffY=touch.clientY-rect.top;focusTouchClone=li.cloneNode(true);focusTouchClone.style.cssText='position:fixed;z-index:998;width:'+rect.width+'px;opacity:0.85;pointer-events:none;background:var(--card);border-radius:4px;padding:16px;box-shadow:0 4px 16px rgba(26,18,8,0.2);border:1px solid var(--faint);';focusTouchClone.style.left=(touch.clientX-focusTouchOffX)+'px';focusTouchClone.style.top=(touch.clientY-focusTouchOffY)+'px';document.body.appendChild(focusTouchClone);li.classList.add('focus-dragging');e.preventDefault();e.stopPropagation();},{passive:false});
+grip.addEventListener('touchmove',e=>{if(!focusTouchClone)return;const touch=e.touches[0];focusTouchClone.style.left=(touch.clientX-focusTouchOffX)+'px';focusTouchClone.style.top=(touch.clientY-focusTouchOffY)+'px';focusTouchClone.style.display='none';const el=document.elementFromPoint(touch.clientX,touch.clientY);focusTouchClone.style.display='';list.querySelectorAll('li.focus-item').forEach(l=>l.classList.remove('focus-drag-over'));const overLi=el&&el.closest('li.focus-item');if(overLi&&overLi!==focusTouchSrc)overLi.classList.add('focus-drag-over');e.preventDefault();e.stopPropagation();},{passive:false});
+grip.addEventListener('touchend',e=>{if(!focusTouchClone){focusTouchSrc=null;return;}const touch=e.changedTouches[0];focusTouchClone.style.display='none';const el=document.elementFromPoint(touch.clientX,touch.clientY);focusTouchClone.style.display='';const overLi=el&&el.closest('li.focus-item');if(overLi&&overLi!==focusTouchSrc){const si=parseInt(focusTouchSrc.dataset.fidx);const ti=parseInt(overLi.dataset.fidx);if(si>-1&&ti>-1){const[m]=focusList.splice(si,1);focusList.splice(ti,0,m);save();}}focusTouchClone.remove();focusTouchClone=null;list.querySelectorAll('li').forEach(l=>l.classList.remove('focus-dragging','focus-drag-over'));focusTouchSrc=null;renderFocus();});
+grip.addEventListener('mousedown',()=>{if(li)li.setAttribute('draggable','true');});
+li.addEventListener('dragstart',e=>{if(!e.target.closest('.focus-grip')){e.preventDefault();return;}focusTouchSrc=li;li.classList.add('focus-dragging');e.dataTransfer.effectAllowed='move';e.stopPropagation();});
+li.addEventListener('dragend',()=>{list.querySelectorAll('li').forEach(l=>l.classList.remove('focus-dragging','focus-drag-over'));li.setAttribute('draggable','false');focusTouchSrc=null;});
+li.addEventListener('dragover',e=>{e.preventDefault();e.stopPropagation();list.querySelectorAll('li').forEach(l=>l.classList.remove('focus-drag-over'));if(li!==focusTouchSrc)li.classList.add('focus-drag-over');});
+li.addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();if(!focusTouchSrc||focusTouchSrc===li)return;const si=parseInt(focusTouchSrc.dataset.fidx);const ti=parseInt(li.dataset.fidx);if(si>-1&&ti>-1){const[m]=focusList.splice(si,1);focusList.splice(ti,0,m);save();}renderFocus();});
+});
+}
+
 function isInToday(sid,subid,tid){return todayList.some(x=>x.sid===sid&&x.subid===subid&&x.tid===tid);}
-function addToToday(sid,subid,tid){if(!isInToday(sid,subid,tid)){todayList.push({sid,subid,tid});save();render();renderToday();updateBadge();}}
-function removeFromToday(sid,subid,tid){todayList=todayList.filter(x=>!(x.sid===sid&&x.subid===subid&&x.tid===tid));save();render();renderToday();updateBadge();}
+function addToToday(sid,subid,tid){if(!isInToday(sid,subid,tid)){todayList.push({sid,subid,tid});save();render();updateBadge();}}
+function removeFromToday(sid,subid,tid){todayList=todayList.filter(x=>!(x.sid===sid&&x.subid===subid&&x.tid===tid));save();render();if(currentView==='today')renderToday();updateBadge();}
 function toggleTodayItem(sid,subid,tid){const s=findStrand(sid);if(!s)return;if(subid===null){const t=s.todos.find(x=>x.id===tid);if(t)t.done=!t.done;}else{const sub=findSub(s,subid);const t=sub&&sub.todos.find(x=>x.id===tid);if(t)t.done=!t.done;}save();render();renderToday();}
-function clearDoneToday(){todayList=todayList.filter(x=>{const s=findStrand(x.sid);if(!s)return false;if(x.subid===null){const t=s.todos.find(t=>t.id===x.tid);return t&&!t.done;}else{const sub=findSub(s,x.subid);const t=sub&&sub.todos.find(t=>t.id===x.tid);return t&&!t.done;}});save();render();renderToday();updateBadge();}
-function updateBadge(){const badge=document.getElementById('today-badge');const pending=todayList.filter(x=>{const s=findStrand(x.sid);if(!s)return false;if(x.subid===null){const t=s.todos.find(t=>t.id===x.tid);return t&&!t.done;}else{const sub=findSub(s,x.subid);const t=sub&&sub.todos.find(t=>t.id===x.tid);return t&&!t.done;}}).length;if(badge){badge.textContent=pending;badge.style.display=pending>0?'':'none';}}
-function showView(v){currentView=v;document.getElementById('view-strands').classList.toggle('active',v==='strands');document.getElementById('view-today').classList.toggle('active',v==='today');document.getElementById('tab-strands').classList.toggle('active',v==='strands');document.getElementById('tab-today').classList.toggle('active',v==='today');document.getElementById('add-btn').style.display=v==='strands'?'':'none';if(v==='today')renderToday();}
+function clearDoneToday(){todayList=todayList.filter(x=>{const s=findStrand(x.sid);if(!s)return false;if(x.subid===null){const t=s.todos.find(t=>t.id===x.tid);return t&&!t.done;}const sub=findSub(s,x.subid);const t=sub&&sub.todos.find(t=>t.id===x.tid);return t&&!t.done;});save();render();renderToday();updateBadge();}
+function updateBadge(){const badge=document.getElementById('today-badge');const pending=todayList.filter(x=>{const s=findStrand(x.sid);if(!s)return false;if(x.subid===null){const t=s.todos.find(t=>t.id===x.tid);return t&&!t.done;}const sub=findSub(s,x.subid);const t=sub&&sub.todos.find(t=>t.id===x.tid);return t&&!t.done;}).length;if(badge){badge.textContent=pending;badge.style.display=pending>0?'':'none';}}
 
 function renderToday(){
 const container=document.getElementById('today-content');
@@ -268,7 +325,7 @@ if(!todayList.length){container.innerHTML='<div class="today-empty"><h2>Nothing 
 const items=todayList.map((x,i)=>{
 const s=findStrand(x.sid);if(!s)return '';
 let todo=null;
-if(x.subid===null){todo=s.todos.find(t=>t.id===x.tid);}
+if(x.subid===null)todo=s.todos.find(t=>t.id===x.tid);
 else{const sub=findSub(s,x.subid);todo=sub&&sub.todos.find(t=>t.id===x.tid);}
 if(!todo)return '';
 const subidStr=x.subid===null?'null':x.subid;
@@ -276,41 +333,31 @@ return '<li class="today-item '+(todo.done?'done-item':'')+'" data-tidx="'+i+'">
 }).join('');
 const hasDone=todayList.some(x=>{const s=findStrand(x.sid);if(!s)return false;if(x.subid===null){const t=s.todos.find(t=>t.id===x.tid);return t&&t.done;}const sub=findSub(s,x.subid);const t=sub&&sub.todos.find(t=>t.id===x.tid);return t&&t.done;});
 container.innerHTML='<ul class="today-list" id="today-list">'+items+'</ul>'+(hasDone?'<button class="today-clear-done" onclick="clearDoneToday()">Clear completed</button>':'');
-updateBadge();
-initTodayDrag();
+updateBadge();initTodayDrag();
 }
+
+function showView(v){currentView=v;['strands','focus','today'].forEach(n=>{const view=document.getElementById('view-'+n);const tab=document.getElementById('tab-'+n);if(view)view.classList.toggle('active',v===n);if(tab)tab.classList.toggle('active',v===n);});document.getElementById('add-btn').style.display=v==='strands'?'':'none';if(v==='today')renderToday();if(v==='focus')renderFocus();}
 
 const grip=()=>'<div class="todo-grip"><span></span><span></span><span></span><span></span><span></span><span></span></div>';
 
-function render(){
-const canvas=document.getElementById('canvas');
-if(!strands.length){canvas.innerHTML='<div class="empty-state"><h2>No strands yet.</h2><p>Tap "+ New" to begin.</p></div>';return;}
-canvas.innerHTML=strands.map(renderStrand).join('');
-initStrandDrag();initTodoDrag();updateBadge();
-}
+function render(){const canvas=document.getElementById('canvas');if(!strands.length){canvas.innerHTML='<div class="empty-state"><h2>No strands yet.</h2><p>Tap "+ New" to begin.</p></div>';return;}canvas.innerHTML=strands.map(renderStrand).join('');initStrandDrag();initTodoDrag();updateBadge();updateFocusBadge();}
 
 function renderStrand(s){
-const{done,total}=allDone(s);
-const pct=total?Math.round(done/total*100):0;
+const{done,total}=allDone(s);const pct=total?Math.round(done/total*100):0;
 const sc={active:'status-active',paused:'status-paused',blocked:'status-blocked'}[s.status];
 const sl={active:'Active',paused:'Paused',blocked:'Blocked'}[s.status];
 const subCount=s.subs.length;
-const todoRows=s.todos.map(t=>{
-const inT=isInToday(s.id,null,t.id);
-return '<li class="todo-item" data-sid="'+s.id+'" data-tid="'+t.id+'">'+grip()+'<input type="checkbox" class="todo-check" '+(t.done?'checked':'')+' onchange="toggleTodo('+s.id+','+t.id+')"><label class="todo-label" onclick="toggleTodo('+s.id+','+t.id+')">'+esc(t.text)+'</label><button class="todo-today-btn '+(inT?'in-today':'')+'" onclick="'+(inT?'removeFromToday('+s.id+',null,'+t.id+')':'addToToday('+s.id+',null,'+t.id+')')+'">'+(inT?'added':'today')+'</button><button class="todo-del" onclick="deleteTodo('+s.id+','+t.id+')">x</button></li>';
-}).join('');
+const inF=isInFocus(s.id);
+const todoRows=s.todos.map(t=>{const inT=isInToday(s.id,null,t.id);return '<li class="todo-item" data-sid="'+s.id+'" data-tid="'+t.id+'">'+grip()+'<input type="checkbox" class="todo-check" '+(t.done?'checked':'')+' onchange="toggleTodo('+s.id+','+t.id+')"><label class="todo-label" onclick="toggleTodo('+s.id+','+t.id+')">'+esc(t.text)+'</label><button class="todo-today-btn '+(inT?'in-today':'')+'" onclick="'+(inT?'removeFromToday('+s.id+',null,'+t.id+')':'addToToday('+s.id+',null,'+t.id+')')+'">'+(inT?'added':'today')+'</button><button class="todo-del" onclick="deleteTodo('+s.id+','+t.id+')">x</button></li>';}).join('');
 const subRows=s.subs.map(sub=>renderSub(s.id,sub)).join('');
 const editPanel='<div class="edit-panel" id="edit-'+s.id+'"><label>Title</label><input type="text" id="et-'+s.id+'" value="'+esc(s.title)+'"><label>Description</label><textarea id="ed-'+s.id+'">'+esc(s.desc)+'</textarea><label>Category</label><input type="text" id="ec-'+s.id+'" value="'+esc(s.tag)+'"><label>Status</label><select id="es-'+s.id+'"><option value="active" '+(s.status==='active'?'selected':'')+'>Active</option><option value="paused" '+(s.status==='paused'?'selected':'')+'>Paused</option><option value="blocked" '+(s.status==='blocked'?'selected':'')+'>Blocked</option></select><label>Colour</label><div class="edit-color-options">'+COLORS.map(c=>'<div class="edit-color-dot '+(c===s.color?'selected':'')+'" style="background:'+c+'" onclick="pickEditColor('+s.id+',\''+c+'\')"></div>').join('')+'</div><div class="edit-actions"><button class="btn-save" onclick="saveEdit('+s.id+')">Save</button><button class="btn-cancel-edit" onclick="closeEdit('+s.id+')">Cancel</button></div></div>';
-return '<div class="strand '+(s.open?'open':'')+'" id="strand-'+s.id+'" data-id="'+s.id+'"><div class="strand-accent" style="background:'+s.color+'"></div><div class="drag-handle" data-drag="'+s.id+'"><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="strand-header" onclick="toggleStrand('+s.id+')"><div class="strand-meta"><span class="strand-tag">'+esc(s.tag)+'</span><span class="strand-status '+sc+'">'+sl+'</span></div><div class="strand-title">'+esc(s.title)+'</div><div class="strand-subtitle">'+esc(s.desc)+'</div></div>'+(total>0?'<div class="strand-progress"><div class="strand-progress-fill" style="width:'+pct+'%;background:'+s.color+'"></div></div>':'')+'<div class="strand-footer" onclick="toggleStrand('+s.id+')"><span>'+(total?done+'/'+total+' done':'No tasks')+(subCount?' &middot; '+subCount+' sub':'')+'</span><span style="display:flex;align-items:center;gap:3px"><i class="chevron">&#9658;</i> '+(s.open?'less':'more')+'</span></div><div class="strand-body">'+editPanel+'<div class="body-tabs"><button class="body-tab '+(s.activeTab==='tasks'?'active':'')+'" onclick="setTab('+s.id+',\'tasks\')">Tasks</button><button class="body-tab '+(s.activeTab==='subs'?'active':'')+'" onclick="setTab('+s.id+',\'subs\')">Sub-strands'+(subCount?' ('+subCount+')':'')+'</button></div><div class="tab-pane '+(s.activeTab==='tasks'?'active':'')+'"><ul class="todos" id="todos-'+s.id+'">'+todoRows+'</ul><div class="add-todo"><input type="text" id="newtodo-'+s.id+'" placeholder="Add a task..." onkeydown="if(event.key===\'Enter\')addTodo('+s.id+')"><button onclick="addTodo('+s.id+')">Add</button></div></div><div class="tab-pane '+(s.activeTab==='subs'?'active':'')+'"><div class="substrands-grid">'+subRows+'<div class="new-substrand-form" id="nsf-'+s.id+'"><input type="text" id="nst-'+s.id+'" placeholder="Sub-strand name..." onkeydown="if(event.key===\'Enter\')confirmNewSub('+s.id+')"><div class="form-row"><button class="btn-confirm" onclick="confirmNewSub('+s.id+')">Create</button><button class="btn-cancel-sm" onclick="cancelNewSub('+s.id+')">Cancel</button></div></div><button class="add-substrand-btn" id="nsb-'+s.id+'" onclick="showNewSubForm('+s.id+')">+ Add sub-strand</button></div></div><div class="strand-actions"><button class="strand-edit-btn" onclick="openEdit('+s.id+')">Edit</button><button class="strand-delete-btn" onclick="deleteStrand('+s.id+')">Delete</button></div></div></div>';
+return '<div class="strand '+(s.open?'open':'')+'" id="strand-'+s.id+'" data-id="'+s.id+'"><div class="strand-accent" style="background:'+s.color+'"></div><div class="drag-handle" data-drag="'+s.id+'"><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="strand-header" onclick="toggleStrand('+s.id+')"><div class="strand-meta"><span class="strand-tag">'+esc(s.tag)+'</span><span class="strand-status '+sc+'">'+sl+'</span></div><div class="strand-title">'+esc(s.title)+'</div><div class="strand-subtitle">'+esc(s.desc)+'</div></div>'+(total>0?'<div class="strand-progress"><div class="strand-progress-fill" style="width:'+pct+'%;background:'+s.color+'"></div></div>':'')+'<div class="strand-footer" onclick="toggleStrand('+s.id+')"><span>'+(total?done+'/'+total+' done':'No tasks')+(subCount?' &middot; '+subCount+' sub':'')+'</span><span style="display:flex;align-items:center;gap:6px"><button class="focus-btn '+(inF?'in-focus':'')+'" onclick="event.stopPropagation();'+(inF?'removeFromFocus('+s.id+')':'addToFocus('+s.id+')')+'">'+(inF?'focused':'focus')+'</button><span style="display:flex;align-items:center;gap:3px"><i class="chevron">&#9658;</i> '+(s.open?'less':'more')+'</span></span></div><div class="strand-body">'+editPanel+'<div class="body-tabs"><button class="body-tab '+(s.activeTab==='tasks'?'active':'')+'" onclick="setTab('+s.id+',\'tasks\')">Tasks</button><button class="body-tab '+(s.activeTab==='subs'?'active':'')+'" onclick="setTab('+s.id+',\'subs\')">Sub-strands'+(subCount?' ('+subCount+')':'')+'</button></div><div class="tab-pane '+(s.activeTab==='tasks'?'active':'')+'"><ul class="todos" id="todos-'+s.id+'">'+todoRows+'</ul><div class="add-todo"><input type="text" id="newtodo-'+s.id+'" placeholder="Add a task..." onkeydown="if(event.key===\'Enter\')addTodo('+s.id+')"><button onclick="addTodo('+s.id+')">Add</button></div></div><div class="tab-pane '+(s.activeTab==='subs'?'active':'')+'"><div class="substrands-grid">'+subRows+'<div class="new-substrand-form" id="nsf-'+s.id+'"><input type="text" id="nst-'+s.id+'" placeholder="Sub-strand name..." onkeydown="if(event.key===\'Enter\')confirmNewSub('+s.id+')"><div class="form-row"><button class="btn-confirm" onclick="confirmNewSub('+s.id+')">Create</button><button class="btn-cancel-sm" onclick="cancelNewSub('+s.id+')">Cancel</button></div></div><button class="add-substrand-btn" id="nsb-'+s.id+'" onclick="showNewSubForm('+s.id+')">+ Add sub-strand</button></div></div><div class="strand-actions"><button class="strand-edit-btn" onclick="openEdit('+s.id+')">Edit</button><button class="strand-delete-btn" onclick="deleteStrand('+s.id+')">Delete</button></div></div></div>';
 }
 
 function renderSub(sid,sub){
 const done=sub.todos.filter(t=>t.done).length,total=sub.todos.length;
 const color=findStrand(sid).color;
-const todoRows=sub.todos.map(t=>{
-const inT=isInToday(sid,sub.id,t.id);
-return '<li class="substrand-todo" data-sid="'+sid+'" data-subid="'+sub.id+'" data-tid="'+t.id+'">'+grip()+'<input type="checkbox" class="todo-check" '+(t.done?'checked':'')+' onchange="toggleSubTodo('+sid+','+sub.id+','+t.id+')"><label class="todo-label" onclick="toggleSubTodo('+sid+','+sub.id+','+t.id+')">'+esc(t.text)+'</label><button class="todo-today-btn '+(inT?'in-today':'')+'" onclick="'+(inT?'removeFromToday('+sid+','+sub.id+','+t.id+')':'addToToday('+sid+','+sub.id+','+t.id+')')+'">'+(inT?'added':'today')+'</button><button class="todo-del" onclick="deleteSubTodo('+sid+','+sub.id+','+t.id+')">x</button></li>';
-}).join('');
+const todoRows=sub.todos.map(t=>{const inT=isInToday(sid,sub.id,t.id);return '<li class="substrand-todo" data-sid="'+sid+'" data-subid="'+sub.id+'" data-tid="'+t.id+'">'+grip()+'<input type="checkbox" class="todo-check" '+(t.done?'checked':'')+' onchange="toggleSubTodo('+sid+','+sub.id+','+t.id+')"><label class="todo-label" onclick="toggleSubTodo('+sid+','+sub.id+','+t.id+')">'+esc(t.text)+'</label><button class="todo-today-btn '+(inT?'in-today':'')+'" onclick="'+(inT?'removeFromToday('+sid+','+sub.id+','+t.id+')':'addToToday('+sid+','+sub.id+','+t.id+')')+'">'+(inT?'added':'today')+'</button><button class="todo-del" onclick="deleteSubTodo('+sid+','+sub.id+','+t.id+')">x</button></li>';}).join('');
 return '<div class="substrand '+(sub.open?'open':'')+'" id="sub-'+sid+'-'+sub.id+'"><div class="substrand-accent" style="background:'+color+'88"></div><div class="substrand-header" onclick="toggleSub('+sid+','+sub.id+')"><div><div class="substrand-title">'+esc(sub.title)+'</div><div class="substrand-meta">'+(total?done+'/'+total+' done':'No tasks yet')+'</div></div><span class="substrand-chevron">&#9658;</span></div><div class="substrand-body"><ul class="substrand-todos" id="subtodos-'+sid+'-'+sub.id+'">'+todoRows+'</ul><div class="substrand-add"><input type="text" id="sst-'+sid+'-'+sub.id+'" placeholder="Add task..." onkeydown="if(event.key===\'Enter\')addSubTodo('+sid+','+sub.id+')"><button onclick="addSubTodo('+sid+','+sub.id+')">Add</button></div><div class="substrand-del-row"><button class="substrand-del-btn" onclick="deleteSub('+sid+','+sub.id+')">Delete</button></div></div></div>';
 }
 
@@ -361,7 +408,7 @@ function initTodayDrag(){
 const list=document.getElementById('today-list');if(!list)return;
 list.querySelectorAll('.today-grip').forEach(grip=>{
 const li=grip.closest('li');if(!li)return;
-grip.addEventListener('touchstart',e=>{todayTouchSrc=li;const touch=e.touches[0];const rect=li.getBoundingClientRect();todayTouchOffX=touch.clientX-rect.left;todayTouchOffY=touch.clientY-rect.top;todayTouchClone=li.cloneNode(true);todayTouchClone.style.cssText='position:fixed;z-index:998;width:'+rect.width+'px;opacity:0.85;pointer-events:none;background:var(--card);border-radius:4px;padding:12px 14px;font-size:0.78rem;font-family:DM Mono,monospace;box-shadow:0 4px 16px rgba(26,18,8,0.2);border:1px solid var(--faint);';todayTouchClone.style.left=(touch.clientX-todayTouchOffX)+'px';todayTouchClone.style.top=(touch.clientY-todayTouchOffY)+'px';document.body.appendChild(todayTouchClone);li.classList.add('today-dragging');e.preventDefault();e.stopPropagation();},{passive:false});
+grip.addEventListener('touchstart',e=>{todayTouchSrc=li;const touch=e.touches[0];const rect=li.getBoundingClientRect();todayTouchOffX=touch.clientX-rect.left;todayTouchOffY=touch.clientY-rect.top;todayTouchClone=li.cloneNode(true);todayTouchClone.style.cssText='position:fixed;z-index:998;width:'+rect.width+'px;opacity:0.85;pointer-events:none;background:var(--card);border-radius:4px;padding:12px 14px;font-family:DM Mono,monospace;box-shadow:0 4px 16px rgba(26,18,8,0.2);border:1px solid var(--faint);';todayTouchClone.style.left=(touch.clientX-todayTouchOffX)+'px';todayTouchClone.style.top=(touch.clientY-todayTouchOffY)+'px';document.body.appendChild(todayTouchClone);li.classList.add('today-dragging');e.preventDefault();e.stopPropagation();},{passive:false});
 grip.addEventListener('touchmove',e=>{if(!todayTouchClone)return;const touch=e.touches[0];todayTouchClone.style.left=(touch.clientX-todayTouchOffX)+'px';todayTouchClone.style.top=(touch.clientY-todayTouchOffY)+'px';todayTouchClone.style.display='none';const el=document.elementFromPoint(touch.clientX,touch.clientY);todayTouchClone.style.display='';list.querySelectorAll('li.today-item').forEach(l=>l.classList.remove('today-drag-over'));const overLi=el&&el.closest('li.today-item');if(overLi&&overLi!==todayTouchSrc)overLi.classList.add('today-drag-over');e.preventDefault();e.stopPropagation();},{passive:false});
 grip.addEventListener('touchend',e=>{if(!todayTouchClone){todayTouchSrc=null;return;}const touch=e.changedTouches[0];todayTouchClone.style.display='none';const el=document.elementFromPoint(touch.clientX,touch.clientY);todayTouchClone.style.display='';const overLi=el&&el.closest('li.today-item');if(overLi&&overLi!==todayTouchSrc){const si=parseInt(todayTouchSrc.dataset.tidx);const ti=parseInt(overLi.dataset.tidx);if(si>-1&&ti>-1){const[m]=todayList.splice(si,1);todayList.splice(ti,0,m);save();}}todayTouchClone.remove();todayTouchClone=null;list.querySelectorAll('li').forEach(l=>l.classList.remove('today-dragging','today-drag-over'));todayTouchSrc=null;renderToday();});
 grip.addEventListener('mousedown',()=>{if(li)li.setAttribute('draggable','true');});
@@ -374,7 +421,7 @@ li.addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();if(!todayT
 
 function toggleStrand(id){const s=findStrand(id);if(s){s.open=!s.open;save();render();}}
 function setTab(id,tab){const s=findStrand(id);if(s){s.activeTab=tab;s.open=true;save();render();}}
-function deleteStrand(id){if(confirm('Delete this strand?')){todayList=todayList.filter(x=>x.sid!==id);strands=strands.filter(s=>s.id!==id);save();render();}}
+function deleteStrand(id){if(confirm('Delete this strand?')){todayList=todayList.filter(x=>x.sid!==id);focusList=focusList.filter(x=>x.sid!==id);strands=strands.filter(s=>s.id!==id);save();render();}}
 function toggleTodo(sid,tid){const s=findStrand(sid);const t=s&&s.todos.find(x=>x.id===tid);if(t){t.done=!t.done;s.open=true;save();render();if(currentView==='today')renderToday();}}
 function deleteTodo(sid,tid){todayList=todayList.filter(x=>!(x.sid===sid&&x.subid===null&&x.tid===tid));const s=findStrand(sid);if(s){s.todos=s.todos.filter(x=>x.id!==tid);s.open=true;save();render();}}
 function addTodo(sid){const el=document.getElementById('newtodo-'+sid);const text=el?el.value.trim():'';if(!text)return;const s=findStrand(sid);if(!s)return;s.todos.push({id:uid(),text,done:false});s.open=true;save();render();setTimeout(()=>{const e=document.getElementById('newtodo-'+sid);if(e)e.focus();},30);}
@@ -399,4 +446,6 @@ render();
 </script>
 </body>
 </html>
+
+
 
